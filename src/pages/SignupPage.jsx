@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useAuth } from '../context/AuthContext';
-import { User, Mail, Lock, CheckCircle2 } from 'lucide-react';
+import { User, Mail, Lock, CheckCircle2, Ticket } from 'lucide-react';
 
 const SignupPage = () => {
-  const [formData, setFormData] = useState({ username: '', email: '', password: '' });
+  const [formData, setFormData] = useState({ username: '', email: '', password: '', referralCode: '' });
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
   const { signup } = useAuth();
@@ -87,6 +87,19 @@ const SignupPage = () => {
                 className="input-field pl-12"
                 value={formData.password}
                 onChange={(e) => setFormData({...formData, password: e.target.value})}
+              />
+            </div>
+          </div>
+          <div className="space-y-2">
+            <label className="text-sm font-medium text-gray-300 ml-1">Referral Code (Optional)</label>
+            <div className="relative">
+              <Ticket className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500" />
+              <input 
+                type="text" 
+                placeholder="PROMO2024" 
+                className="input-field pl-12"
+                value={formData.referralCode}
+                onChange={(e) => setFormData({...formData, referralCode: e.target.value})}
               />
             </div>
           </div>

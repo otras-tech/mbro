@@ -21,7 +21,14 @@ const Dashboard = () => {
             animate={{ opacity: 1, x: 0 }}
           >
             <h1 className="text-4xl font-bold mb-2">Welcome back, <span className="gradient-text">{user?.username}</span>!</h1>
-            <p className="text-gray-400 text-lg">Here's what's happening with your projects today.</p>
+            <div className="flex items-center gap-3">
+              <p className="text-gray-400 text-lg">Here's what's happening with your projects today.</p>
+              {user?.referralCode && (
+                <span className="px-3 py-1 bg-accent-purple/10 border border-accent-purple/20 text-accent-purple text-xs font-bold rounded-full uppercase tracking-wider">
+                  Partner Code: {user.referralCode}
+                </span>
+              )}
+            </div>
           </motion.div>
           
           <motion.div 
